@@ -8,13 +8,17 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
+import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -88,21 +92,7 @@ public class Utils {
           map.putString(key, value.toString());
           break;
         default:
-          if (List.class.isAssignableFrom(value.getClass())) {
-            map.putArray(key, Arguments.makeNativeArray((List<Object>) value));
-          } else if (Map.class.isAssignableFrom(value.getClass())) {
-            WritableMap childMap = Arguments.createMap();
-            Map<String, Object> valueMap = (Map<String, Object>) value;
-
-            for (Map.Entry<String, Object> entry : valueMap.entrySet()) {
-              mapPutValue(entry.getKey(), entry.getValue(), childMap);
-            }
-
-            map.putMap(key, childMap);
-          } else {
-            Log.d(TAG, "utils:mapPutValue:unknownType:" + type);
-            map.putNull(key);
-          }
+          map.putString(key, null);
       }
     }
   }
@@ -121,28 +111,72 @@ public class Utils {
     return writableMap;
   }
 
-  /**
-   * Convert a ReadableMap into a native Java Map
-   * TODO This is now a legacy util - internally uses RN functionality
-   *
-   * @param readableMap ReadableMap
-   * @return Map
-   */
+
   public static Map<String, Object> recursivelyDeconstructReadableMap(ReadableMap readableMap) {
-    // https://github.com/facebook/react-native/blob/master/ReactAndroid/src/main/java/com/facebook/react/bridge/ReadableNativeMap.java#L216
-    return readableMap.toHashMap();
+    Map<String, Object> deconstructedMap = new HashMap<>();
+    if (readableMap == null) {
+      return deconstructedMap;
+    }
+
+    ReadableMapKeySetIterator iterator = readableMap.keySetIterator();
+    while (iterator.hasNextKey()) {
+      String key = iterator.nextKey();
+      ReadableType type = readableMap.getType(key);
+      switch (type) {
+        case Null:
+          deconstructedMap.put(key, null);
+          break;
+        case Boolean:
+          deconstructedMap.put(key, readableMap.getBoolean(key));
+          break;
+        case Number:
+          deconstructedMap.put(key, readableMap.getDouble(key));
+          break;
+        case String:
+          deconstructedMap.put(key, readableMap.getString(key));
+          break;
+        case Map:
+          deconstructedMap.put(key, Utils.recursivelyDeconstructReadableMap(readableMap.getMap(key)));
+          break;
+        case Array:
+          deconstructedMap.put(key, Utils.recursivelyDeconstructReadableArray(readableMap.getArray(key)));
+          break;
+        default:
+          throw new IllegalArgumentException("Could not convert object with key: " + key + ".");
+      }
+
+    }
+    return deconstructedMap;
   }
 
-  /**
-   * Convert a ReadableArray into a native Java Map
-   * TODO This is now a legacy util - internally uses RN functionality
-   *
-   * @param readableArray ReadableArray
-   * @return List<Object>
-   */
   public static List<Object> recursivelyDeconstructReadableArray(ReadableArray readableArray) {
-    // https://github.com/facebook/react-native/blob/master/ReactAndroid/src/main/java/com/facebook/react/bridge/ReadableNativeArray.java#L175
-    return readableArray.toArrayList();
+    List<Object> deconstructedList = new ArrayList<>(readableArray.size());
+    for (int i = 0; i < readableArray.size(); i++) {
+      ReadableType indexType = readableArray.getType(i);
+      switch (indexType) {
+        case Null:
+          deconstructedList.add(i, null);
+          break;
+        case Boolean:
+          deconstructedList.add(i, readableArray.getBoolean(i));
+          break;
+        case Number:
+          deconstructedList.add(i, readableArray.getDouble(i));
+          break;
+        case String:
+          deconstructedList.add(i, readableArray.getString(i));
+          break;
+        case Map:
+          deconstructedList.add(i, Utils.recursivelyDeconstructReadableMap(readableArray.getMap(i)));
+          break;
+        case Array:
+          deconstructedList.add(i, Utils.recursivelyDeconstructReadableArray(readableArray.getArray(i)));
+          break;
+        default:
+          throw new IllegalArgumentException("Could not convert object at index " + i + ".");
+      }
+    }
+    return deconstructedList;
   }
 
   /**

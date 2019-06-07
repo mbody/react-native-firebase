@@ -21,14 +21,14 @@ public class RNFirebaseBackgroundNotificationActionReceiver extends BroadcastRec
 
   static WritableMap toNotificationOpenMap(Intent intent) {
     Bundle extras = intent.getExtras();
-    WritableMap notificationMap = Arguments.makeNativeMap(extras.getBundle("notification"));
+    WritableMap notificationMap = Arguments.fromBundle(extras.getBundle("notification"));
     WritableMap notificationOpenMap = Arguments.createMap();
     notificationOpenMap.putString("action", extras.getString("action"));
     notificationOpenMap.putMap("notification", notificationMap);
 
     Bundle extrasBundle = extras.getBundle("results");
     if (extrasBundle != null) {
-      WritableMap results = Arguments.makeNativeMap(extrasBundle);
+      WritableMap results = Arguments.fromBundle(extrasBundle);
       notificationOpenMap.putMap("results", results);
     }
 

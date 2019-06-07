@@ -254,7 +254,7 @@ public class RNFirebaseNotifications extends ReactContextBaseJavaModule implemen
       return null;
     }
 
-    WritableMap notificationMap = Arguments.makeNativeMap(intent.getExtras());
+    WritableMap notificationMap = Arguments.fromBundle(intent.getExtras());
     WritableMap notificationOpenMap = Arguments.createMap();
     notificationOpenMap.putString("action", intent.getAction());
     notificationOpenMap.putMap("notification", notificationMap);
@@ -262,7 +262,7 @@ public class RNFirebaseNotifications extends ReactContextBaseJavaModule implemen
     // Check for remote input results
     Bundle remoteInput = RemoteInput.getResultsFromIntent(intent);
     if (remoteInput != null) {
-      notificationOpenMap.putMap("results", Arguments.makeNativeMap(remoteInput));
+      notificationOpenMap.putMap("results", Arguments.fromBundle(remoteInput));
     }
 
     return notificationOpenMap;
@@ -302,7 +302,7 @@ public class RNFirebaseNotifications extends ReactContextBaseJavaModule implemen
   }
 
   private WritableMap parseNotificationBundle(Bundle notification) {
-    return Arguments.makeNativeMap(notification);
+    return Arguments.fromBundle(notification);
   }
 
   private WritableMap parseRemoteMessage(RemoteMessage message) {

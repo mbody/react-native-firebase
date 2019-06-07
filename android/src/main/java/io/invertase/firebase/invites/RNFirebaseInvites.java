@@ -22,7 +22,6 @@ import com.google.firebase.appinvite.FirebaseAppInvite;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -187,7 +186,7 @@ public class RNFirebaseInvites extends ReactContextBaseJavaModule implements Act
     if (requestCode == REQUEST_INVITE) {
       if (resultCode == Activity.RESULT_OK) {
         String[] ids = AppInviteInvitation.getInvitationIds(resultCode, data);
-        mPromise.resolve(Arguments.fromList(Arrays.asList(ids)));
+        mPromise.resolve(Arguments.fromArray(ids));
       } else if (resultCode == Activity.RESULT_CANCELED) {
         mPromise.reject("invites/invitation-cancelled", "Invitation cancelled");
       } else {

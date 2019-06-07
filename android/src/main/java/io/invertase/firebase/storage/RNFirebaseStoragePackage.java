@@ -3,6 +3,7 @@ package io.invertase.firebase.storage;
 import android.support.annotation.RequiresPermission;
 
 import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.UIManagerModule;
@@ -38,6 +39,10 @@ public class RNFirebaseStoragePackage implements ReactPackage {
    */
   @Override
   public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+    return Collections.emptyList();
+  }
+  @Override
+  public List<Class<? extends JavaScriptModule>> createJSModules() {
     return Collections.emptyList();
   }
 }

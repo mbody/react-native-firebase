@@ -81,9 +81,7 @@ public class RNFirebaseFunctions extends ReactContextBaseJavaModule {
     ReadableMap wrapper,
     final Promise promise
   ) {
-    Object input = wrapper
-      .toHashMap()
-      .get(DATA_KEY);
+    Object input = wrapper.getMap(DATA_KEY);
 
     Log.d(TAG, "function:call:input:" + name + ":" + (input != null ? input.toString() : "null"));
 
