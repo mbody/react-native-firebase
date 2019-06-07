@@ -4,8 +4,8 @@
 
 #if __has_include(<FirebaseMessaging/FirebaseMessaging.h>)
 #import <FirebaseMessaging/FirebaseMessaging.h>
-#import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTBridgeModule.h"
+#import "RCTEventEmitter.h"
 
 @interface RNFirebaseMessaging : RCTEventEmitter<RCTBridgeModule, FIRMessagingDelegate>
 

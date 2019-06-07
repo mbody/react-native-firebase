@@ -11,7 +11,7 @@
     #endif
 
     #ifdef HAS_CRASHLYTICS
-        #import <React/RCTBridgeModule.h>
+        #import "RCTBridgeModule.h"
 
         @interface RNFirebaseCrashlytics : NSObject <RCTBridgeModule> {
 

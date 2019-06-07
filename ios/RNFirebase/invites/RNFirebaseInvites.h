@@ -4,8 +4,8 @@
 
 #if __has_include(<FirebaseInvites/FirebaseInvites.h>)
 #import <FirebaseInvites/FirebaseInvites.h>
-#import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTBridgeModule.h"
+#import "RCTEventEmitter.h"
 
 @interface RNFirebaseInvites : RCTEventEmitter<RCTBridgeModule, FIRInviteDelegate>
 

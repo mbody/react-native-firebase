@@ -6,9 +6,9 @@
 #import "RNFirebaseUtil.h"
 #import <FirebaseInvites/FirebaseInvites.h>
 
-#import <React/RCTEventDispatcher.h>
-#import <React/RCTConvert.h>
-#import <React/RCTUtils.h>
+#import "RCTEventDispatcher.h"
+#import "RCTConvert.h"
+#import "RCTUtils.h"
 
 @implementation RNFirebaseInvites
 

@@ -6,8 +6,8 @@
 #if __has_include(<FirebaseFirestore/FirebaseFirestore.h>)
 
 #import <FirebaseFirestore/FirebaseFirestore.h>
-#import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTBridgeModule.h"
+#import "RCTEventEmitter.h"
 
 @interface RNFirebaseFirestore : RCTEventEmitter <RCTBridgeModule> {}
 @property NSMutableDictionary *transactions;

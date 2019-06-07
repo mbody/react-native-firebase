@@ -1,5 +1,5 @@
 #import "RNFirebaseAnalytics.h"
-#import <React/RCTUtils.h>
+#import "RCTUtils.h"
 
 #if __has_include(<FirebaseAnalytics/FIRAnalytics.h>)
 #import <FirebaseAnalytics/FIRAnalytics.h>
@@ -17,9 +17,7 @@ RCT_EXPORT_METHOD(setAnalyticsCollectionEnabled:(BOOL) enabled) {
 }
 
 RCT_EXPORT_METHOD(setCurrentScreen:(NSString *) screenName screenClass:(NSString *) screenClassOverriew) {
-  RCTUnsafeExecuteOnMainQueueSync(^{
-    [FIRAnalytics setScreenName:screenName screenClass:screenClassOverriew];
-  });
+  [FIRAnalytics setScreenName:screenName screenClass:screenClassOverriew];
 }
 
 RCT_EXPORT_METHOD(setUserId: (NSString *) id) {

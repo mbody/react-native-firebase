@@ -1,5 +1,5 @@
-#import <React/RCTComponent.h>
-#import <React/RCTBridgeModule.h>
+#import "RCTComponent.h"
+#import "RCTBridgeModule.h"
 
 #if __has_include(<GoogleMobileAds/GADMobileAds.h>)
 

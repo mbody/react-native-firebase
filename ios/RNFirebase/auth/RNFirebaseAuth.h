@@ -4,8 +4,8 @@
 
 #if __has_include(<FirebaseAuth/FIRAuth.h>)
 #import <Firebase.h>
-#import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTBridgeModule.h"
+#import "RCTEventEmitter.h"
 
 @interface RNFirebaseAuth : RCTEventEmitter <RCTBridgeModule> {};
 @end

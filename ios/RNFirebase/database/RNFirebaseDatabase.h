@@ -6,8 +6,8 @@
 #if __has_include(<FirebaseDatabase/FIRDatabase.h>)
 
 #import <FirebaseDatabase/FIRDatabase.h>
-#import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTBridgeModule.h"
+#import "RCTEventEmitter.h"
 
 @interface RNFirebaseDatabase : RCTEventEmitter <RCTBridgeModule> {}
 @property NSMutableDictionary *dbReferences;

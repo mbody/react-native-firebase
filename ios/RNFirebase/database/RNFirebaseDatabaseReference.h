@@ -7,7 +7,7 @@
 #import "RNFirebaseDatabase.h"
 #import "RNFirebaseEvents.h"
 #import "RNFirebaseUtil.h"
-#import <React/RCTEventEmitter.h>
+#import "RCTEventEmitter.h"
 
 @interface RNFirebaseDatabaseReference : NSObject
 @property RCTEventEmitter *emitter;

@@ -1,14 +1,14 @@
 #ifndef RNFirebaseAdMobRewardedVideo_h
 #define RNFirebaseAdMobRewardedVideo_h
 
-#import <React/RCTBridgeModule.h>
+#import "RCTBridgeModule.h"
 #import "RNFirebaseEvents.h"
 
 #if __has_include(<GoogleMobileAds/GADMobileAds.h>)
 
 #import <GoogleMobileAds/GADRewardBasedVideoAdDelegate.h>
 #import <GoogleMobileAds/GADRewardBasedVideoAd.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTEventEmitter.h"
 #import "RNFirebaseAdMob.h"
 
 @interface RNFirebaseAdMobRewardedVideo : NSObject <GADRewardBasedVideoAdDelegate>

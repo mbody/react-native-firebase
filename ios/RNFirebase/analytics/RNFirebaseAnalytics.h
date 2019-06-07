@@ -3,7 +3,7 @@
 #import <Foundation/Foundation.h>
 
 #if __has_include(<FirebaseAnalytics/FIRAnalytics.h>)
-#import <React/RCTBridgeModule.h>
+#import "RCTBridgeModule.h"
 
 @interface RNFirebaseAnalytics : NSObject <RCTBridgeModule> {
 

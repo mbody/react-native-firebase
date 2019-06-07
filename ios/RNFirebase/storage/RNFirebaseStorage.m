@@ -7,7 +7,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <Photos/Photos.h>
 #import <Firebase.h>
-#import <React/RCTUtils.h>
+#import "RCTUtils.h"
 
 @implementation RNFirebaseStorage
 

@@ -5,7 +5,7 @@
 #if __has_include(<FirebaseFirestore/FirebaseFirestore.h>)
 
 #import <FirebaseFirestore/FirebaseFirestore.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTEventEmitter.h"
 #import "RNFirebaseEvents.h"
 #import "RNFirebaseFirestore.h"
 #import "RNFirebaseFirestoreDocumentReference.h"

@@ -5,8 +5,8 @@
 #if __has_include(<GoogleMobileAds/GADMobileAds.h>)
 #import <Firebase.h>
 #import "RNFirebaseEvents.h"
-#import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTBridgeModule.h"
+#import "RCTEventEmitter.h"
 #import <GoogleMobileAds/GADInterstitialDelegate.h>
 #import <GoogleMobileAds/GADRewardBasedVideoAdDelegate.h>
 

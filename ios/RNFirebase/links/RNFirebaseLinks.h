@@ -4,8 +4,8 @@
 
 #if __has_include(<FirebaseDynamicLinks/FirebaseDynamicLinks.h>)
 #import <FirebaseDynamicLinks/FirebaseDynamicLinks.h>
-#import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTBridgeModule.h"
+#import "RCTEventEmitter.h"
 
 @interface RNFirebaseLinks : RCTEventEmitter<RCTBridgeModule>
 

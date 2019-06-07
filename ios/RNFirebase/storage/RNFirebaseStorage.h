@@ -3,8 +3,8 @@
 #import <Foundation/Foundation.h>
 
 #if __has_include(<FirebaseStorage/FIRStorage.h>)
-#import <React/RCTBridgeModule.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTBridgeModule.h"
+#import "RCTEventEmitter.h"
 
 @interface RNFirebaseStorage : RCTEventEmitter<RCTBridgeModule> {
 

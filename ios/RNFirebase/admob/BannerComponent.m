@@ -1,6 +1,6 @@
 #import "BannerComponent.h"
 #import "RNFirebaseAdMob.h"
-#import <React/UIView+React.h>
+#import "UIView+React.h"
 
 @implementation BannerComponent
 

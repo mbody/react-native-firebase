@@ -2,7 +2,7 @@
 #define RNFirebaseUtil_h
 
 #import <Foundation/Foundation.h>
-#import <React/RCTEventEmitter.h>
+#import "RCTEventEmitter.h"
 #import <Firebase.h>
 
 #ifdef DEBUG
